@@ -26,38 +26,19 @@ class Monster
         return $monsters;
     }
 
-//    function getWaterSupportMonsters(): array
-//    {
-//
-//
-//        $url = "https://summonerswar.fandom.com/wiki/Water_Monsters#5-Star";
-//
-//
-//        $html = file_get_contents($url);
-//
-//
-//        $crawler = new Crawler($html);
-//
-//
-//        $supportMonsters = [];
-//
-//
-//        $crawler->filter('.mw-redirect')->each(function (Crawler $node) use (&$supportMonsters) {
-//                $type = trim($node->filter('.headerSort')->text());
-//
-//
-//        if ($type === 'Support') {
-//
-//
-//            $name = trim($node->text());
-//
-//
-//            $supportMonsters[] = $name;
-//            }
-//        });
-//
-//        return $supportMonsters;
-//}
+
+    function getMonsterByName(string $monsterName): ?string
+    {
+        $monsters = $this->getAllWatersMonsters();
+
+        foreach ($monsters as $monster) {
+            if (strcasecmp($monsterName, $monster) === 0) {
+                return $monster;
+            }
+        }
+
+        return null;
+    }
 
 
 
